@@ -1,0 +1,300 @@
+/* Styling the body */
+body{
+  background-color: #003049;
+}
+
+
+/* Login Styling */
+.login-container{
+  max-width: 500px;
+  width: 100vw;
+  display:flex;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  /* box-shadow: 1px 3px 10px #e9ecef; */
+  background-color: whitesmoke;
+}
+
+.login-container span{
+  margin-top: 20px;
+  color: #adb5bd;
+}
+
+.btn-sign-up{
+  border: none;
+  color: #adb5bd;
+  cursor: pointer;
+}
+
+.login-container .col-1{
+  margin: auto;
+  padding: 3em 0;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.todo-app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-login {
+  text-align: start;
+}
+
+/* Register Styling */
+.register{
+  max-width: 500px;
+  width: 100vw;
+  display:flex;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+  /* box-shadow: 1px 3px 10px #e9ecef; */
+  background-color: whitesmoke;
+}
+
+.btn-sign-in {
+  cursor: pointer;
+}
+
+.register span{
+  color: #adb5bd;
+}
+
+#form{
+  max-width: 320px;
+  width: 100vw;
+  margin: 2em auto;
+}
+
+#form >  input, .btn{
+  border: 1px solid #e9ecef;
+  padding: .9em 1em;
+}
+
+#form > .btn{
+  background-color: #003049;
+  color: #e9ecef;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.flex{
+  display: flex;
+  gap: 1em;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.register .col-1{
+  margin: auto;
+  padding: 3em 0;
+}
+
+.form-register label {
+  text-align: start;
+}
+
+/* Form styling */
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-radio {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 10px -10px;
+}
+
+.low {
+  border-right: 10px solid green;
+}
+
+.medium {
+  border-right: 10px solid orange;
+}
+
+.high {
+  border-right: 10px solid red;
+}
+
+.radio-btn1  {
+  color: green;
+}
+
+.radio-btn2 {
+  color: orange;
+}
+
+.radio-btn3 {
+  color: red;
+}
+
+
+
+/* Styling Todo App */
+.todolist-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.todolist-form input {
+  width: 240px;
+  height: 30px;
+  margin: 10px;
+}
+
+.form-check {
+  width: 70px;
+  margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-add {
+  color: white;
+  width: 200px;
+  height: 30px;
+  background-color: #003049;
+}
+
+.btn-update {
+  color: white;
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+  background-color: #003049;
+}
+
+/* Display List */
+.todolist-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+.todolist-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  min-height: 80px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  margin: 20px 0 0 0;
+}
+
+
+.display-list {
+  width: 300px;
+  height: 55px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 5px 0;
+  background-color: #003049;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 10px;
+}
+
+.task-heading {
+  text-align: start;
+  margin: 1px 0 0 0;
+}
+
+.task-description {
+  text-align: start;
+  font-size: 13px;
+  margin: -1px 0 0 0;
+}
+
+.edit-btn {
+  color: white;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.delete-btn {
+  color: white;
+  margin-right: 10px;
+}
+
+
+/* Styling the search bar */
+
+.search-section {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+.search-section input {
+  width: 300px;
+  height: 30px;
+  border-radius: 10px;
+  border: 0.5px solid;
+}
+
+.searcn-btn {
+  font-size: 22px;
+  margin: 10px 0 0 -40px;
+}
+
+/* Styling the logout button */
+.logout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.logout-btn {
+  background-color: white;
+  font-size: 20PX;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-icon {
+  background-color: white;
+  font-size: 25px;
+  border-left: none;
+}
