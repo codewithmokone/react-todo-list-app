@@ -81,6 +81,7 @@ const Login = ({ setUserState }) => {
                     placeholder="username" 
                     value={username}
                     onChange={handleUsernameChange}
+                    required
                     />
 
                     <label htmlFor="InputPassword"> Password </label>
@@ -89,7 +90,8 @@ const Login = ({ setUserState }) => {
                     type="password" 
                     placeholder="password" 
                     value={password} 
-                    onChange={handlePasswordChange} 
+                    onChange={handlePasswordChange}
+                    required
                     />   
 
                     <button className='btn'> Sign In </button>  

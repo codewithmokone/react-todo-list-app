@@ -1,0 +1,41 @@
+@media (max-width: 480px) {
+
+  .todo-app{
+    display: flex;
+    flex-direction: 'column';
+    justify-content: 'center';
+    align-items: 'center';
+    margin: auto;
+  }
+
+  .todolist-header{
+    width:350px;
+    height:420px
+  }
+
+  .todolist-display{
+    width:350px;
+  }
+
+  .searchInput{
+    width:250px;
+  }
+
+  .display-list{
+    width:300px;
+  }
+
+  .logout-btn{
+    border-width: 1px;
+    border-radius: 30px;
+    width:250px;
+    height:40px;
+    text-align: 'center';
+  }
+
+  .btn-add, .btn-update{
+    border-radius: 30px;
+    height:40px;
+    width: 250px;
+  }
+}

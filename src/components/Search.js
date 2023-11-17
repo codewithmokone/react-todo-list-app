@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlineSearch} from 'react-icons/ai'
+import { AiOutlineSearch } from 'react-icons/ai'
+import "../../src/styles.css"
 
 const Search = ({ onSearch }) => {
   const [clear, setClear] = useState(false);
@@ -11,14 +12,21 @@ const Search = ({ onSearch }) => {
     if (searchInputValue.trim() !== '') {
       onSearch(searchInputValue);
       setClear(true);
-      
+
     }
     setSearchBar('');
   };
 
   return (
     <div className='search-section'>
-      <input type="text" name='searchInput' id="searchInput" value={searchBar} onChange={(e) => setSearchBar(e.target.value)} placeholder='Search task'/>
+      <input
+        className='searchInput'
+        type="text"
+        name='searchInput'
+        id="searchInput"
+        value={searchBar}
+        onChange={(e) => setSearchBar(e.target.value)}
+        placeholder='Search task' />
       <span><AiOutlineSearch className="searcn-btn" onClick={handleSearch} /></span>
     </div>
   );
