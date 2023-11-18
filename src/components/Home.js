@@ -64,14 +64,14 @@ const Home = () => {
 
 
     // Handles update function
-    const handleUpdate = (e, taskId) => {
+    const handleUpdate = (e) => {
         e.preventDefault()
 
         if (!taskName || !taskDescription) {
             setMessage("Task name and description are required.")
         }else{
             let editedTask = {
-                id: taskId,
+                // id: task,
                 taskName,
                 taskDescription,
                 priority
@@ -82,7 +82,7 @@ const Home = () => {
             setPriority(priority)
     
             setListItem(listItem.map(task => {
-                return task.id === taskId ? editedTask : task
+                return task.id === task.id ? editedTask : task
             }))
             setMessage("")
             setTaskName('');
@@ -178,7 +178,7 @@ const Home = () => {
                             </div>
                         </div>
                         <button className='btn-add' onClick={HandlesAddTodo}>ADD</button>
-                        <button className='btn-update' onClick={(e) => handleUpdate(e, taskId)}> UPDATE</button>
+                        <button className='btn-update' onClick={handleUpdate}> UPDATE</button>
                     </form>
                 </div>
                 <div className='todolist-display'>
