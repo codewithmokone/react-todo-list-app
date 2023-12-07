@@ -2,26 +2,11 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const localData = () => {
-  let list = localStorage.getItem('usersDB');
-
-  if (list) {
-    return JSON.parse(localStorage.getItem('usersDB'))
-  } else {
-    return [];
-  }
-}
-
 const Registration = () => {
-
-  // Routing to login page
   const navigate = useNavigate();
-  const routeToLogin = () => {
-    navigate('/login')
-  };
 
+  const localData = JSON.parse(localStorage.getItem('usersDB')) || [];
   const [userInfo, setUserInfo] = useState(localData);
-  console.log(userInfo);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,17 +20,24 @@ const Registration = () => {
       email,
       password
     };
-
     setUserInfo([...userInfo, newUser]);
     setName('');
     setEmail('');
     setPassword('');
+
+    localStorage.setItem('usersDB', JSON.stringify([...userInfo, newUser]));
+
+    navigate('/login')
   };
 
   // Saving to local storage
   useEffect(() => {
     localStorage.setItem("usersDB", JSON.stringify(userInfo));
-  }, [userInfo])
+  }, [userInfo]);
+
+  const routeToLogin = () => {
+    navigate('/login')
+  };
 
   return (
     <div className="register">
@@ -54,15 +46,39 @@ const Registration = () => {
         <span> Register your details below: </span>
         <form id="form" className='form-register flex flex-col' onSubmit={handleSubmit}>
           <label htmlFor="InputName"> Name </label>
-          <input name="name" value={name} type="text" placeholder="name" onChange={(e) => setName(e.target.value)} />
+          <input
+            name="name"
+            value={name}
+            type="text"
+            placeholder="name"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
           <label htmlFor="InputEmail"> Email </label>
-          <input name="email" value={email} type="email" placeholder="email@mail.com" onChange={(e) => setEmail(e.target.value)} />
+          <input
+            name="email"
+            value={email}
+            type="email"
+            placeholder="email@mail.com"
+            required
+            onChange={(e) => setEmail(e.target.value)} />
           <label htmlFor="InputEmail"> Password </label>
-          <input name="password" type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} />
+          <input
+            name="password"
+            type="password"
+            value={password}
+            placeholder="password"
+            required
+            onChange={(e) => setPassword(e.target.value)} />
 
           <button className='btn'> Sign Up </button>
         </form>
-        <span>Already registered ? <span className='btn-sign-in' value="Go to Login" onClick={() => routeToLogin()}> Sign In </span></span>
+        <span>
+          Already registered ?
+          <span className='btn-sign-in' value="Go to Login" onClick={() => routeToLogin()}>
+            Sign In
+          </span>
+        </span>
       </div>
     </div>
   )

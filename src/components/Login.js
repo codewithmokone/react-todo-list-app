@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams, useLocation, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 // Getting data from local storage
@@ -16,9 +16,8 @@ const localUserData = () => {
 }
 
 const Login = ({ setUserState }) => {
-    // console.log(setUserState)
+
     const navigate = useNavigate()
-    const location = useLocation()
     const routeToRegister = () => {
         navigate('/register')
     }
@@ -62,7 +61,6 @@ const Login = ({ setUserState }) => {
         } else {
             console.log('Invalid email or password')
         }
-
         setUsername('');
         setPassword('');
     }
@@ -72,7 +70,7 @@ const Login = ({ setUserState }) => {
         <div className="login-container">
         <div className="col-1">
                 <h2> Sign In </h2>
-                <span>Please login to access the Todo App</span>
+                <span className='text-black'>Please login to access the Todo App</span>
                 <form id="form" className='form-login flex flex-col' onSubmit={handleSubmit}>
                     <label htmlFor="InputEmail"> Username </label>
                     <input 
@@ -83,7 +81,6 @@ const Login = ({ setUserState }) => {
                     onChange={handleUsernameChange}
                     required
                     />
-
                     <label htmlFor="InputPassword"> Password </label>
                     <input 
                     name="password"
@@ -93,7 +90,6 @@ const Login = ({ setUserState }) => {
                     onChange={handlePasswordChange}
                     required
                     />   
-
                     <button className='btn'> Sign In </button>  
                 </form>
                 <span>Don't have an account? <span className='btn-sign-up' value="Go to Register" onClick={() => routeToRegister()}> Sign Up </span></span>

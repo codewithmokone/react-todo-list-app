@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from './Search';
 import ListItems from './ListItems';
-import { BiLogOut } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import "../../src/styles.css";
@@ -23,9 +22,10 @@ const Home = () => {
     const [taskName, setTaskName] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
-    const [priority, setPriority] = useState();
+    const [priority, setPriority] = useState("");
     const [isSearching, setIsSearching] = useState(false);
     const [message, setMessage] = useState("");
+    const [selectedTaskId, setSelectedTaskId] = useState(null);
 
     // Handles the logout
     const navigate = useNavigate();
@@ -67,41 +67,44 @@ const Home = () => {
     const handleUpdate = (e) => {
         e.preventDefault()
 
-        if (!taskName || !taskDescription) {
-            setMessage("Task name and description are required.")
-        }else{
-            let editedTask = {
-                // id: task,
-                taskName,
-                taskDescription,
-                priority
-            }
-    
-            setTaskName(taskName)
-            setTaskDescription(taskDescription)
-            setPriority(priority)
-    
-            setListItem(listItem.map(task => {
-                return task.id === task.id ? editedTask : task
-            }))
-            setMessage("")
-            setTaskName('');
-            setTaskDescription('');
-            setPriority('');
+        if (!selectedTaskId) {
+            setMessage("Please select a task to update.");
+            return;
         }
+        const updatedList = listItem.map(task => {
+            if (task.id === selectedTaskId) {
+                return {
+                    ...task,
+                    taskName: taskName !== '' ? taskName : task.taskName,
+                    taskDescription: taskDescription !== '' ? taskDescription : task.taskDescription,
+                    priority: priority !== undefined ? priority : task.priority,
+                };
+            }
+            return task;
+        });
+
+        setListItem(updatedList);
+        setMessage("");
+        setTaskName('');
+        setTaskDescription('');
+        setPriority('');
+
     }
 
     // Handle the search function
-    const handleSearch = (taskName) => {
+    const handleSearch = (taskName, priority) => {
         const searchData = JSON.parse(localStorage.getItem('todo-list'));
 
-        setSearchQuery(
-            searchData.filter(index => {
-                return index.taskName === taskName
-            })
-        )
+        const filteredData = searchData.filter((index) => {
+            console.log('Task:', index);
+            const isMatchingName = index.taskName.toLowerCase().includes(taskName.toLowerCase());
+            const isMatchingPriority = index.priority === priority;
+
+            return isMatchingName | isMatchingPriority;
+        });
+
+        setSearchQuery(filteredData);
         setIsSearching(true);
-        console.log(searchQuery)
     };
 
     //Handles the delete function
@@ -116,6 +119,7 @@ const Home = () => {
 
     // Handles the edit function
     function handleEdit(task) {
+        setSelectedTaskId(task.id);
         setTaskName(task.taskName);
         setTaskDescription(task.taskDescription);
         setPriority(task.Priority);
@@ -134,7 +138,7 @@ const Home = () => {
 
                     <h1>Todo List App</h1>
                     <form className='todolist-form'>
-                        {message && <p style={{ marginTop:-15, color:'red', marginBottom:-5}}>Task name and description required.</p>}
+                        {message && <p style={{ marginTop: -15, color: 'red', marginBottom: -5 }}>Task name and description required.</p>}
                         <div className='form-inputs'>
                             <input
                                 type='text'

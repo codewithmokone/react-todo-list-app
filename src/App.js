@@ -14,10 +14,9 @@ function App() {
     <div className="App">
       <Router>
           <Routes>
-          <Route path='/' element={<Home />} />
-            {/* <Route path='/' element={ isLoggedIn ? <Home /> : <Navigate to="/login"/> } /> */}
-            {/* <Route path='/login/' element={ !isLoggedIn ? <Login setUserState={setUserState} name="redirect" /> : <Navigate to="/home"/> } /> */}
-            {/* <Route path='/register' element={ <Registration /> } /> */}
+            <Route path='/' element={ isLoggedIn ? <Home /> : <Navigate to="/login"/> } />
+            <Route path='/login/' element={ !isLoggedIn ? <Login setUserState={setUserState} name="redirect" /> : <Navigate to="/home"/> } />
+            <Route path='/register' element={ <Registration /> } />
           </Routes>
       </Router>
     </div>
